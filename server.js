@@ -39,4 +39,7 @@ app.get('/api/hadith', (_req, res) => res.json(hadith));
 app.get('/api/adhkar', (_req, res) => res.json(adhkar));
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+}
+module.exports = app;
