@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نور – القرآن والأحاديث والأذكار</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Reem+Kufi:wght@500;700&display=swap">
+<style>
+:root{--bg:#eef3f1;--sf:#fff;--ink:#0f2a2e;--mu:#587176;--ac:#1f6f66;--on:#fff;--gold:#b58a2b;--bd:#d3e0dc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1b1e;--sf:#12282c;--ink:#e6efec;--mu:#8fadb0;--ac:#5cc2b3;--on:#0c1b1e;--gold:#d9b25a;--bd:#21403f}}
+:root[data-theme="dark"]{--bg:#0c1b1e;--sf:#12282c;--ink:#e6efec;--mu:#8fadb0;--ac:#5cc2b3;--on:#0c1b1e;--gold:#d9b25a;--bd:#21403f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 "Amiri Quran","Noto Naskh Arabic",Tahoma,serif}
+header{max-width:760px;margin:0 auto;padding:28px 16px 8px}
+h1{font:700 2.2rem/1.2 "Reem Kufi","Noto Kufi Arabic",Tahoma,sans-serif;margin:0;color:var(--ac)}
+header p{margin:4px 0 0;color:var(--mu)}
+nav{max-width:760px;margin:12px auto;padding:0 16px;display:flex;gap:8px}
+nav button,.btn{font:500 1rem "Reem Kufi",Tahoma,sans-serif;border:1px solid var(--bd);background:var(--sf);color:var(--ink);padding:8px 18px;border-radius:999px;cursor:pointer}
+nav button[aria-selected="true"],.btn.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+main{max-width:760px;margin:0 auto;padding:8px 16px 48px}
+input[type=search]{width:100%;font:inherit;padding:10px 16px;border:1px solid var(--bd);border-radius:12px;background:var(--sf);color:var(--ink);margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.s{display:flex;gap:10px;align-items:center;text-align:start;padding:10px 12px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;cursor:pointer;color:var(--ink);font:inherit}
+.s b{color:var(--gold);font-weight:400;min-width:2ch}
+.mushaf{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:24px 20px;margin-top:12px;font-size:1.7rem;line-height:2.6;text-align:justify}
+.mushaf h2{font:700 1.8rem "Reem Kufi",Tahoma,sans-serif;text-align:center;margin:0 0 12px;color:var(--ac)}
+.n{color:var(--gold);font-size:1.1rem;margin-inline:6px}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+.card p{margin:0 0 8px;font-size:1.35rem;line-height:2.2}
+.src{color:var(--mu);font-size:.95rem}
+.zk{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cnt{flex:none;min-width:84px;font:700 1.2rem "Reem Kufi",Tahoma,sans-serif}
+.note{color:var(--mu);font-size:.95rem;margin:8px 0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><h1>نور</h1><p>القرآن الكريم · الأحاديث · الأذكار</p></header>
+<nav role="tablist">
+<button role="tab" data-t="q" aria-selected="true">القرآن</button>
+<button role="tab" data-t="h" aria-selected="false">الأحاديث</button>
+<button role="tab" data-t="a" aria-selected="false">الأذكار</button>
+</nav>
+<main>
+<section id="q">
+<div id="list"><input type="search" id="find" placeholder="ابحث عن سورة"><div class="grid" id="grid"></div></div>
+<div id="read" hidden><button class="btn" id="back">رجوع للفهرس</button><div class="mushaf" id="mus"></div><p class="note" id="msg"></p></div>
+</section>
+<section id="h" hidden></section>
+<section id="a" hidden><div id="cats" style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"></div><div id="az"></div></section>
+</main>
+<script>
+var N="الفاتحة،البقرة،آل عمران،النساء،المائدة،الأنعام،الأعراف،الأنفال،التوبة،يونس،هود،يوسف،الرعد،إبراهيم،الحجر،النحل،الإسراء،الكهف،مريم،طه،الأنبياء،الحج،المؤمنون،النور،الفرقان،الشعراء،النمل،القصص،العنكبوت،الروم،لقمان،السجدة،الأحزاب،سبأ،فاطر،يس،الصافات،ص،الزمر،غافر،فصلت،الشورى،الزخرف،الدخان،الجاثية،الأحقاف،محمد،الفتح،الحجرات،ق،الذاريات،الطور،النجم،القمر،الرحمن،الواقعة،الحديد،المجادلة،الحشر،الممتحنة،الصف،الجمعة،المنافقون،التغابن،الطلاق،التحريم،الملك،القلم،الحاقة،المعارج،نوح،الجن،المزمل،المدثر،القيامة،الإنسان،المرسلات،النبأ،النازعات،عبس،التكوير،الانفطار،المطففين،الانشقاق،البروج،الطارق،الأعلى،الغاشية،الفجر،البلد،الشمس،الليل،الضحى،الشرح،التين،العلق،القدر،البينة،الزلزلة،العاديات،القارعة،التكاثر،العصر،الهمزة،الفيل،قريش،الماعون،الكوثر،الكافرون،النصر،المسد،الإخلاص،الفلق،الناس".split("،");
+var $=function(i){return document.getElementById(i)};
+function ar(n){return String(n).replace(/\d/g,function(d){return "٠١٢٣٤٥٦٧٨٩"[d]})}
+function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+// tabs
+var tabs=document.querySelectorAll("nav button");
+tabs.forEach(function(b){b.onclick=function(){tabs.forEach(function(x){x.setAttribute("aria-selected",x===b);$(x.dataset.t).hidden=x!==b})}});
+
+// surah index
+function drawGrid(f){var g=$("grid");g.innerHTML="";N.forEach(function(nm,i){if(f&&nm.indexOf(f)<0)return;var b=document.createElement("button");b.className="s";b.innerHTML="<b>"+ar(i+1)+"</b><span>"+nm+"</span>";b.onclick=function(){openSurah(i+1)};g.appendChild(b)})}
+$("find").oninput=function(e){drawGrid(e.target.value.trim())};
+$("back").onclick=function(){$("read").hidden=true;$("list").hidden=false};
+
+function show(n,ay,note){var m=$("mus");m.innerHTML="<h2>سورة "+N[n-1]+"</h2>"+((n!=1&&n!=9)?"<p style='text-align:center;margin:0'>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>":"");
+ var p=document.createElement("div");ay.forEach(function(t,i){var s=document.createElement("span");s.textContent=t+" ";var k=document.createElement("span");k.className="n";k.textContent="﴿"+ar(i+1)+"﴾";p.appendChild(s);p.appendChild(k)});m.appendChild(p);$("msg").textContent=note||""}
+
+function openSurah(n){$("list").hidden=true;$("read").hidden=false;save("lastSurah",n);window.scrollTo(0,0);
+ $("mus").innerHTML="<h2>سورة "+N[n-1]+"</h2><p class='note'>جارٍ التحميل…</p>";$("msg").textContent="";
+  api("/api/surah/"+n).then(function(j){show(n,j.ayahs,j.partial?"نسخة تجريبية: شغّل npm run seed لتحميل المصحف كاملاً.":"")}).catch(function(){show(n,[]);$("msg").textContent="تعذّر تحميل السورة. تأكد أن السيرفر شغّال وأنك نفّذت npm run seed."})}
+
+// api helpers
+function api(u){return fetch(u).then(function(r){if(!r.ok)throw 0;return r.json()})}
+// hadith
+api("/api/hadith").then(function(l){$("h").innerHTML=l.map(function(h){return "<div class='card'><p>"+h.text+"</p><span class='src'>"+h.source+"</span></div>"}).join("")}).catch(function(){$("h").textContent="تعذّر تحميل الأحاديث."});
+// adhkar with counters
+var cats=$("cats"),az=$("az");
+function drawAz(items){az.innerHTML="";items.forEach(function(z){var d=document.createElement("div");d.className="card zk";var t=document.createElement("p");t.textContent=z.text;var b=document.createElement("button");b.className="btn cnt";var left=z.count;function up(){b.textContent=left>0?ar(left):"تم ✓"}up();b.onclick=function(){if(left>0){left--;up()}};d.appendChild(t);d.appendChild(b);az.appendChild(d)})}
+api("/api/adhkar").then(function(data){var keys=Object.keys(data);keys.forEach(function(c,i){var b=document.createElement("button");b.className="btn"+(i?"":" on");b.textContent=c;b.onclick=function(){cats.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b)});drawAz(data[c])};cats.appendChild(b)});drawAz(data[keys[0]])}).catch(function(){az.textContent="تعذّر تحميل الأذكار."});
+drawGrid("");
+</script>
+</body>
+</html>
